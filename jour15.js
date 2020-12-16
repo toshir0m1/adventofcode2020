@@ -3,13 +3,9 @@
 \*-------------------------*/
 
 var starting = [4, 1, 20, 6, 14, 0];
-//var starting = [6, 3, 0];
-
 var liste = [].concat(starting);
 
-var phase = 2;
-
-var turns = [2020, 30000000];
+var turns = [2020, 30000000], phase = 2;
 for (var t = 1, tMax = (turns[phase - 1] - starting.length); t <= tMax; ++t ) {
 	liste.unshift(speak());
 }
