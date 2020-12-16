@@ -54,12 +54,13 @@ for (var t of tickets) {
 
 console.log("Part 1 : " + invalidValues);
 
-// part 2
+// part 2 --- broken --- in rework
 
-var orderedRules = [], unknownRules = rulesDetails.cloner();
-for (var i = 0, iMax = validTickets[0].length; i < iMax; ++i) {
+var validRules = [], deja = [], unknownRules = rulesDetails.cloner();
+for (var i = 0, iMax = validTickets[0].split(",").length; i < iMax; ++i) {
 	for (var r in unknownRules) {
 		var ruleKO = false;
+		validRules[i] = validRules[i] || [];
 		for (var t of validTickets) {
 			var values = t.split(",");
 			if (!checkRule(unknownRules[r], +values[i])) {
@@ -68,16 +69,37 @@ for (var i = 0, iMax = validTickets[0].length; i < iMax; ++i) {
 			}
 		}
 		if (!ruleKO) {
-			orderedRules.push(unknownRules.splice(r, 1)[0]);
+			validRules[i].push(unknownRules[r]);
 		}
 	}
 }
 
+var orderedRules = validRules.cloner();
+orderedRules.sort(function(a, b) { return a.length > b.length; });
+
+/*
+var resultRules = [];
+for (var i = 0, iMax = orderedRules.length; i < iMax; ++i) {
+	for (var j = 0, jMax = ordered[i].length; j < jMax; ++j) {
+		if (!deja.indexOf(ordered[i][j][1]) == -1) {
+			deja.push(ordered[i][j][1]);
+			resultRules[pos] = ordered[i][j];
+			break;
+		}
+	}
+	orderedRules[i]
+}
+
 console.log(rulesDetails);
+console.log(validRules);
 console.log(orderedRules);
+*/
 
 var myTicket = [107,157,197,181,71,113,179,109,97,163,73,53,101,193,173,151,167,191,127,103];
 
+console.log(myTicket[1] * myTicket[5] * myTicket[11] * myTicket[12] * myTicket[16] * myTicket[17]);
+
+/*
 var solution = 1;
 for (var i = 0, iMax = orderedRules.length; i < iMax; ++i) {
 	if (orderedRules[i][1].indexOf("departure") != -1) {
@@ -88,6 +110,7 @@ for (var i = 0, iMax = orderedRules.length; i < iMax; ++i) {
 }
 
 console.log("Solution (part 2) : " + solution);
+*/
 
 function checkRule(rule, val) {
 	if (((val >= rule[2]) && (val <= rule[3])) || ((val >= rule[4]) && (val <= rule[5]))) {
