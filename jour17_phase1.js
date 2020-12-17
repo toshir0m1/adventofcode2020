@@ -10,15 +10,14 @@ function Cube(z, y, x) {
 	this.x = x;
 }
 
-
+/*
 grid.push(new Cube(0, -1, 0));
 grid.push(new Cube(0, 0, 1));
 grid.push(new Cube(0, 1, -1));
 grid.push(new Cube(0, 1, 0));
 grid.push(new Cube(0, 1, 1));
+*/
 
-
-/*
 grid.push(new Cube(0, 0, 6));
 grid.push(new Cube(0, 0, 7));
 grid.push(new Cube(0, -1, 0));
@@ -46,11 +45,10 @@ grid.push(new Cube(0, -7, 1));
 grid.push(new Cube(0, -7, 2));
 grid.push(new Cube(0, -7, 3));
 grid.push(new Cube(0, -7, 5));
-*/
 
-//go(6);
+go(6);
 
-//console.log(grid.length);
+console.log(grid.length);
 
 function go(rounds) {
 	for (var i = 0; i < rounds; ++i) {
